@@ -1,6 +1,6 @@
 ---
 title: "[객체지향설계와패턴]SOLID 원칙"
-date: 2019-04-19 15:05:28 -0400
+date: 2019-04-24 15:05:28 -0400
 categories: jekyll update
 ---
 
