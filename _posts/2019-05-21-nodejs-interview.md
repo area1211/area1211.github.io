@@ -113,3 +113,28 @@ console.log("third");
 
 
 Scripting language란 무엇인가?
+소스코드를 컴파일하지 않고도 실행할 수 있는 언어를 말한다. 바로 인터프리터에 의해 실행이 된다.
+컴파일 언어에 비해 빠른 실행 속도를 보인다는 것이 장점이다.
+
+출처:[https://bytearcher.com/articles/io-vs-cpu-bound/](https://bytearcher.com/articles/io-vs-cpu-bound/)
+'CPU bound' 와 'I/O bound'는 무엇을 의미하는가?
+
+`I/O bound application`은 대부분의 시간을 네트워크, 파일시스템, 데이터베이스를 기다리는데 보낸다.
+하드 디스크 속도나 네트워크 커넥션을 증가시키는 것이 전체 성능을 향상시킨다.
+
+`CPU bound application`의 예로 SHA-1 체크섬을 계산하는 서비스를 생각해볼 수 있다.
+대부분의 시간을 hash를 crunching 하는 데에 사용한다. 입력 문자열에 대해 많은 양의 bitwise xor와 shift를 실행하는 것이다.
+이런 형태의 application은 Node.js에서 문제를 일으킨다. 대부분의 시간을 CPU 집약적인 일을 수행하다면 다른 모든 요청은 보류된다.
+CPU 집약적인 일을 처리하기 위한 전략들이 있다. 
+ - 계산하는 부분을 다른 곳으로 분리 시키는 것이다. libuv로 부터의 저수준 워커 스레드를 사용하거나 분리된 서비스를 만들어서, 자식 프로세스를 fork하거나 cluster 모듈을 사용한다. 
+ - 최소한 setImeediate()를 설정하여 이벤트 루프에 실행을 자주 반환하는것을 할 수 있다.
+
+출처:[https://bcho.tistory.com/881](https://bcho.tistory.com/881)
+언제 Node.js 를 써야할까?
+ - file upload/download와 같은 네트워크 스트리밍 서비스
+ - real time web application; 채팅 서비스(socket.io)
+ - SPA(Single Page Application)
+ 가볍고 생산성이 높은 웹 개발 프레임워크를 갖고 있고, 간단한 로직을 가지면서 대용량, 그리고 빠른 응답 시간을 요구 하는 애플리케이션에 적절한다.
+
+언제 Node.js 를 쓰지 말아야 할까?
+ - CRUD가 많고 페이지가 많은 웹 개발
